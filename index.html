@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Lazy Turtle</title>
+		<meta charset="UTF-8">
+		<link rel="icon" type="image/x-icon" href="./favicon.ico">
+		<link rel="stylesheet" href="./assets/styles/styles.css">
+		<script src="https://unpkg.com/blockly/blockly.min.js"></script>
+		<script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+	 </head>
+	<body>
+		<h1>🐢</h1>
+		<div id="cont" style="display: flex">
+
+			<div style="width: 55%; height: 80vh;">
+				<div id="blocklyDiv" style="height: 100%; width: 100%;"></div>
+			</div>
+			<div id="graph" style="width: 45%; height: 80vh"> </div>
+		</div>
+
+		<div id="error"> </div>
+		<div id="turtle"> </div>
+		<div id="bl"> </div>
+
+		<script type="module" defer>
+			import './assets/app.js';
+		</script>
+	</body>
+</html>

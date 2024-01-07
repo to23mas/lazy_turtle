@@ -1,0 +1,11 @@
+import './annotations.js';
+import './prefix.js';
+import './iri.js';
+import './app.js';
+import './subject.js';
+import './predicate.js';
+import './object.js';
+import './triplet.js';
+import './literal.js';
+import './blank.js';
+import '../dynamicBlock/prefixedIri.js';
