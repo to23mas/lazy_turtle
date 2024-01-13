@@ -1,6 +1,5 @@
-import { buildBase, clearDiv, buildPrefixes } from '../../utils/turtle.js';
-
 const blockName = 'annotations';
+
 Blockly.Blocks[blockName] = {
 	init: function() {
 		this.appendValueInput("Iri")
