@@ -46,6 +46,10 @@ export const toolbox = {
 				},
 				{
 					"kind": "block",
+					"type": "subject"
+				},
+				{
+					"kind": "block",
 					"type": "predicate"
 				},
 				{
