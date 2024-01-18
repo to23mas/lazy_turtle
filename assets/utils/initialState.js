@@ -26,12 +26,12 @@ export const init = (workspace) => {
 	const predicate = workspace.newBlock('predicate'); connectStatement(subject, 'Predicate', predicate);
 	const predicatePrefixedIri2 = workspace.newBlock('prefixedIri'); setValue(predicatePrefixedIri2, 'options', 'rel'); setValue(predicatePrefixedIri2, 'NAME', 'enemyOf'); connect(predicate, 'Iri', predicatePrefixedIri2);
 
+	//blank
+	const blank = workspace.newBlock('blank'); connectStatement(predicate, 'Object', blank);
 	const turtleObject3 = workspace.newBlock('object'); connectStatement(predicate, 'Object', turtleObject3);
 	const turtleObject3Iri = workspace.newBlock('iri'); setValue(turtleObject3Iri, 'iri', '<#spiderman>'); connect(turtleObject3, 'Iri', turtleObject3Iri);
-	//blank
-	const blank = workspace.newBlock('blank'); connectStatement(appBlock, 'Blanks', blank);
-	const blankSubjectIri = workspace.newBlock('iri'); setValue(blankSubjectIri, 'iri', '<#green-goblin>'); connect(blank, 'Subject', blankSubjectIri);
-	const blankPredicateIri = workspace.newBlock('prefixedIri'); setValue(blankPredicateIri, 'options', 'rel'); setValue(blankPredicateIri, 'NAME', 'friendOf'); connect(blank, 'Predicate', blankPredicateIri);
+	const blankSubjectIri = workspace.newBlock('iri'); setValue(blankSubjectIri, 'iri', '<#green-goblin>'); //connect(blank, 'Subject', blankSubjectIri);
+	const blankPredicateIri = workspace.newBlock('prefixedIri'); setValue(blankPredicateIri, 'options', 'rel'); setValue(blankPredicateIri, 'NAME', 'friendOf'); //connect(blank, 'Predicate', blankPredicateIri);
 	const blankPredicateType = workspace.newBlock('predicate'); connectStatement(blank, 'Blank',  blankPredicateType);
 	const blankObject = workspace.newBlock('object'); connectStatement(blankPredicateType, 'Object', blankObject);
 	const blankObjectIri = workspace.newBlock('iri'); setValue(blankObjectIri, 'iri', '<#spiderman>'); connect(blankObject, 'Iri', blankObjectIri);

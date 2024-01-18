@@ -1,18 +1,12 @@
 Blockly.Blocks['blank'] = {
 	init: function() {
-		this.appendValueInput("Subject")
-			.setCheck(["Iri", "PrefixedIri"])
-			.appendField("Subjekt: ");
-		this.appendValueInput("Predicate")
-			.setCheck(["Iri", "PrefixedIri"])
-			.appendField("Predikát: ");
 		this.appendStatementInput("Blank")
 			.setCheck(["Predicate"])
-			.appendField("Vnitřní predikáty: ");
+			.appendField("BLANK NODE");
 		this.setInputsInline(true);
 		this.setPreviousStatement(true, "Blank");
 		this.setNextStatement(true, "Blank");
-		this.setColour(0);
+		this.setColour('gray');
 		this.setTooltip("");
 		this.setHelpUrl("");
 	}
@@ -23,7 +17,7 @@ javascript.javascriptGenerator.forBlock['blank'] = function(block, generator) {
 	var predicate = generator.valueToCode(block, 'Predicate', javascript.Order.ATOMIC);
 	var content = generator.statementToCode(block, 'Blank');
 
-	const blank = {subject: subject.slice(1, -1), predicate: predicate.slice(1, -1), content: content}
+	const blank = {blank: {subject: subject.slice(1, -1), predicate: predicate.slice(1, -1), content: content}}
 
-	return JSON.stringify(blank) + '!';
+	return JSON.stringify(blank);
 };

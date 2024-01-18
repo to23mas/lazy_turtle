@@ -2,7 +2,7 @@ Blockly.Blocks['predicate'] = {
 	init: function() {
 		this.appendValueInput("Iri")
 			.setCheck(["Iri", "PrefixedIri"])
-			.appendField("Iri predikátu: ");
+			.appendField("PREDIKÁT           Iri:");
 		this.appendStatementInput("Object")
 			.setCheck(["Object", 'Blank'])
 			.appendField("Objekty:");
@@ -19,8 +19,10 @@ javascript.javascriptGenerator.forBlock['predicate'] = function(block, generator
 	const predicate_iri = generator.valueToCode(block, 'Iri', javascript.Order.ATOMIC);
 	const objects_iri = generator.statementToCode(block, 'Object');
 
-	const object_iris = objects_iri.split('!').slice(0, -1).map((item) => {return item.trim()});
-	const predicate = {predicate: predicate_iri.slice(1, -1), objects: object_iris};
+	const objects_and_blanks = objects_iri.replace(/}{/gi, '}!{').split('!').map((item) => {return item.trim()});
+	// console.log(objects_and_blanks);
+
+	const predicate = {predicate: predicate_iri.slice(1, -1), objects: objects_and_blanks};
 
 	return JSON.stringify(predicate);
 };

@@ -8,13 +8,10 @@ Blockly.Blocks['app'] = {
 			.setAlign(Blockly.ALIGN_RIGHT)
 			.appendField("Prefixy a Base: ");
 		this.appendStatementInput("Turtles")
-			.setCheck("Subject")
+			.setCheck(["Subject", "Blank"])
 			.appendField("Turtle:");
-		this.appendStatementInput("Blanks")
-			.setCheck("Blank")
-			.appendField("Blank nodes:");
 		this.setInputsInline(false);
-		this.setColour('gray');
+		this.setColour('#444444');
 		this.setTooltip("Application block");
 		this.setHelpUrl("");
 		this.setDeletable(false);
@@ -33,7 +30,7 @@ javascript.javascriptGenerator.forBlock['app'] = function(block, generator) {
 	} catch {
 		base = '';
 	}
-	// const prefixes = JSON.parse(annotations.slice(1, -1))['prefixes'];
+
 	try {
 		prefixes = JSON.parse(annotations.slice(1, -1))['prefixes'];
 	} catch {

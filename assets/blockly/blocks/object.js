@@ -2,11 +2,11 @@ Blockly.Blocks['object'] = {
 	init: function() {
 		this.appendValueInput("Iri")
 			.setCheck(["Iri", "PrefixedIri", "Literal"])
-			.appendField("Iri objektu: ");
+			.appendField("OBJEKT           Iri:");
 		this.setInputsInline(true);
 		this.setPreviousStatement(true, ["Object", 'Blank']);
 		this.setNextStatement(true, ["Object", 'Blank']);
-		this.setColour(105);
+		this.setColour(120);
 		this.setTooltip("");
 		this.setHelpUrl("");
 	}
@@ -14,6 +14,7 @@ Blockly.Blocks['object'] = {
 
 javascript.javascriptGenerator.forBlock['object'] = function(block, generator) {
 	const code =  generator.valueToCode(block, 'Iri', javascript.Order.ATOMIC);
+	const object = {object: code.slice(1,-1)};
 
-	return code.slice(1, -1) + '!';
+	return JSON.stringify(object);
 };
