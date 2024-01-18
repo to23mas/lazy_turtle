@@ -4,7 +4,7 @@ Blockly.Blocks['prefixedIri'] = {
 			.appendField("Název prefixu:")
 			.appendField(new Blockly.FieldDropdown(this.generateOptions), "options")
 			.appendField("    ")
-			.appendField("Hodnota prefixu:")
+			.appendField("Krátké Iri:")
 			.appendField(new Blockly.FieldTextInput("default"), "NAME");
 		this.setOutput(true, "PrefixedIri");
 		this.setColour(290);
@@ -33,7 +33,7 @@ javascript.javascriptGenerator.forBlock['prefixedIri'] = function(block, generat
 	var dropdown_options = block.getFieldValue('options');
 	var text_name = block.getFieldValue('NAME');
 
-	const code = `${dropdown_options}: ${text_name}`;
+	const code = `${dropdown_options}:${text_name}`;
 
 	return [code, javascript.Order.NONE];
 };

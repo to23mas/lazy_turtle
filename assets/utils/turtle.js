@@ -46,7 +46,7 @@ export const buildBlank = (blanks, base) => {
 	for (let i = 0; i < blanks.length; i++) {
 		const blank = JSON.parse(blanks[i]);
 		tableContent += `<tr><td class="subject">${toPrintable(toBase(blank['subject']))}</td>`; // 1. col
-		const pred = (blank['predicate'] === 'rdf: Type') ? 'a' : toBase(blank['predicate']);
+		const pred = (blank['predicate'] === 'rdf:type') ? 'a' : toBase(blank['predicate']);
 		tableContent += `<td class="predicate">${toPrintable(pred)}</td>`; // 2. col
 
 		const blankContent = blank['content'].replace(/}{/gi, '}!{').split('!');
@@ -63,7 +63,7 @@ export const buildBlank = (blanks, base) => {
 				tableContent += `<td></td>`; // 3. col
 			}
 
-			const innerPred = (content['predicate'] === 'rdf: Type') ? 'a' : toBase(content['predicate']);
+			const innerPred = (content['predicate'] === 'rdf:type') ? 'a' : toBase(content['predicate']);
 			tableContent += `<td class="predicate">${toPrintable(innerPred)}</td>`; // 4. col
 
 			const objects = content['objects'];
@@ -98,7 +98,7 @@ export const buildTurtle = (turtles, base) => {
 		for (let i = 0; i < iMax; i++) {
 			const parsedPredicate = JSON.parse(parsedTurtle['predicates'][i]);
 
-			const pred = (parsedPredicate['predicate'] === 'rdf: Type') ? 'a' : toBase(parsedPredicate['predicate']);
+			const pred = (parsedPredicate['predicate'] === 'rdf:type') ? 'a' : toBase(parsedPredicate['predicate']);
 			if (i === 0) {
 				sub += `<td class="predicate">${toPrintable(pred)}</td>`;
 			} else {

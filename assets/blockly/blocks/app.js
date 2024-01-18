@@ -17,6 +17,7 @@ Blockly.Blocks['app'] = {
 		this.setColour('gray');
 		this.setTooltip("Application block");
 		this.setHelpUrl("");
+		this.setDeletable(false);
 	}
 };
 
@@ -25,8 +26,19 @@ javascript.javascriptGenerator.forBlock['app'] = function(block, generator) {
 	const turtles = generator.statementToCode(block, 'Turtles');
 	const blanks = generator.statementToCode(block, 'Blanks');
 
-	const base = JSON.parse(annotations.slice(1, -1))['base'];
-	const prefixes = JSON.parse(annotations.slice(1, -1))['prefixes'];
+	let base = '';
+	let prefixes = '';
+	try {
+		base = JSON.parse(annotations.slice(1, -1))['base'];
+	} catch {
+		base = '';
+	}
+	// const prefixes = JSON.parse(annotations.slice(1, -1))['prefixes'];
+	try {
+		prefixes = JSON.parse(annotations.slice(1, -1))['prefixes'];
+	} catch {
+		prefixes = '';
+	}
 
 	base === '' ? clearDiv('base') : buildBase(base);
 	if (prefixes === '') {
@@ -40,6 +52,8 @@ javascript.javascriptGenerator.forBlock['app'] = function(block, generator) {
 			turtles.replace(/}{/gi, '}!{').split('!').map((item) => {return item.trim()}),
 			base,
 		);
+	} else {
+		document.getElementById('tab').innerHTML = '';
 	}
 
 	if (blanks !== '') {
@@ -47,13 +61,21 @@ javascript.javascriptGenerator.forBlock['app'] = function(block, generator) {
 			blanks.split('!').slice(0, -1),
 			base,
 		);
+	} else {
+		document.getElementById('blanks').innerHTML = '';
 	}
 
-	runGraph(
-		turtles.replace(/}{/gi, '}!{').split('!').map((item) => {return item.trim()}),
-		blanks.split('!').slice(0, -1),
-		base,
-	);
+	if (turtles === '' && blanks === '') {
+		document.getElementById('graph').innerHTML = '';
+	}  else {
+		runGraph(
+			turtles.replace(/}{/gi, '}!{').split('!').map((item) => {return item.trim()}),
+			blanks.split('!').slice(0, -1),
+			base,
+		);
+	}
+
+
 
 	return '';
 };
