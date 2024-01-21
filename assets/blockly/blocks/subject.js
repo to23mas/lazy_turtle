@@ -20,9 +20,10 @@ javascript.javascriptGenerator.forBlock['subject'] = function(block, generator) 
 	const predicates = generator.statementToCode(block, 'Predicate');
 
 	console.log(predicates);
+	// console.log(predicates);
 	// const parserPredicates = predicates.replace(/}{/gi, '}!{').split('!').map((item) => {return item.trim()});
 	// const subject = {subject: subject_iri.slice(1, -1), predicates: parserPredicates};
 
-	console.log(subject);
+	// console.log(subject);
 	return JSON.stringify(subject);
 };

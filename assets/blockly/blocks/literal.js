@@ -12,5 +12,7 @@ Blockly.Blocks['literal'] = {
 
 
 javascript.javascriptGenerator.forBlock['literal'] = function(block, generator) {
-	return [`${block.getFieldValue('literal')}`, javascript.Order.NONE];
+	const literal = '{literal:'+ block.getFieldValue('literal')+'}';
+
+	return [literal, javascript.Order.NONE];
 };

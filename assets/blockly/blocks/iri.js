@@ -11,7 +11,7 @@ Blockly.Blocks['iri'] = {
 };
 
 javascript.javascriptGenerator.forBlock['iri'] = function(block, generator) {
-	const iri = `${block.getFieldValue('iri')}`;
+	const iri = '{iri:'+ block.getFieldValue('iri')+'}';
 
-	return [iri, javascript.Order.NONE];
+	return [iri,  javascript.Order.NONE];
 };

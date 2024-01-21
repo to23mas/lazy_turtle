@@ -13,8 +13,8 @@ Blockly.Blocks['object'] = {
 };
 
 javascript.javascriptGenerator.forBlock['object'] = function(block, generator) {
-	const code =  generator.valueToCode(block, 'Iri', javascript.Order.ATOMIC);
-	const object = {object: code.slice(1,-1)};
+	const code =  generator.valueToCode(block, 'Iri', javascript.Order.MEMBER);
+	const object = code.slice(1,-1);
 
-	return JSON.stringify(object);
+	return object;
 };

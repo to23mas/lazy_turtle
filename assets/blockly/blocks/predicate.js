@@ -19,10 +19,14 @@ javascript.javascriptGenerator.forBlock['predicate'] = function(block, generator
 	const predicate_iri = generator.valueToCode(block, 'Iri', javascript.Order.ATOMIC);
 	const objects_iri = generator.statementToCode(block, 'Object');
 
-	const objects_and_blanks = objects_iri.replace(/}{/gi, '}!{').split('!').map((item) => {return item.trim()});
-	// console.log(objects_and_blanks);
+	const to_return = predicate_iri.slice(1,-1) + objects_iri;
+	// const to_return = '{'+predicate_iri.slice(1,-1) + objects_iri+'}';
+	// console.log(to_return);
+	// const objects_and_blanks = objects_iri.replace(/}{/gi, '}!{').split('!').map((item) => {return item.trim()});
+	// console.log(objects_iri);
 
-	const predicate = {predicate: predicate_iri.slice(1, -1), objects: objects_and_blanks};
+	// const predicate = {predicate: predicate_iri.slice(1, -1), objects: objects_and_blanks};
 
-	return JSON.stringify(predicate);
+	// return JSON.stringify(predicate);
+	return to_return;
 };

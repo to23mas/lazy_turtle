@@ -33,7 +33,7 @@ javascript.javascriptGenerator.forBlock['prefixedIri'] = function(block, generat
 	var dropdown_options = block.getFieldValue('options');
 	var text_name = block.getFieldValue('NAME');
 
-	const code = `${dropdown_options}:${text_name}`;
+	const code = `{prefixed:${dropdown_options}-${text_name}}`;
 
 	return [code, javascript.Order.NONE];
 };
