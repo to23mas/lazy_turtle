@@ -81,7 +81,8 @@ export const runGraph = (turtles, blanks, base) => {
 
 	const finalEdges = [];
 	for (let [k, v] of uniqueEdges) {
-		if ( v['label'] === 'rdf: Type') {
+		console.log(v);
+		if ( v['label'].includes('rdf:type')) {
 			v['label'] = 'a';
 		}
 		finalEdges.push( v );
